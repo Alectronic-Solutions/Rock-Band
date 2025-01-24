@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Band - Official Website</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rock+Salt&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bangers', cursive;
+      font-weight: 400;
+      color: #ff0000;
+      letter-spacing: 2px;
+    }
+
+    a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #ff4d4d;
+    }
+
+    /* Header */
+    .header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .header h1 {
+      font-size: 5rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .header p {
+      font-size: 1.8rem;
+      margin: 10px 0 0;
+      color: #ccc;
+      font-family: 'Rock Salt', cursive;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav .logo {
+      height: 50px;
+    }
+
+    .nav .logo-text h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: #ff0000;
+    }
+
+    .nav .logo-text p {
+      font-size: 1rem;
+      margin: 0;
+      color: #ccc;
+      font-family: 'Rock Salt', cursive;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Bangers', cursive;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #ff0000;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Music Section */
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .music-item {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .music-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .music-item img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .music-item h3 {
+      margin: 15px 0;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    .music-item p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    /* Tour Dates */
+    .tour-dates {
+      list-style: none;
+      padding: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .tour-dates li {
+      background-color: #222;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tour-dates li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .tour-dates li span {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .tour-dates li span:first-child {
+      color: #ff0000;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #222;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #444;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: #333;
+      color: #fff;
+      resize: none; /* Prevent resizing */
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #ccc;
+    }
+
+    .contact-form button {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .contact-form button:hover {
+      background-color: #ff4d4d;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #222;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #ff0000;
+    }
+
+    .footer-section p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin: 10px 0;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ff0000;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .footer-bottom img {
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    .footer-bottom a {
+      color: #ff0000;
+      margin: 0 10px;
+    }
+
+    .footer-bottom a:hover {
+      color: #ff4d4d;
+    }
+
+    .footer-bottom .designer {
+      margin-top: 10px;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom .designer a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .footer-bottom .designer a:hover {
+      color: #ff4d4d;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 3.5rem;
+      }
+
+      .header p {
+        font-size: 1.5rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav .logo-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+      }
+
+      .music-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Video Background -->
+  <div class="header">
+    <video autoplay muted loop>
+      <source src="videos/background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1>Rock Band</h1>
+    <p>Your favorite rock band since 2023</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="logo-container">
+      <img src="images/logo.png" alt="Rock Band Logo" class="logo">
+      <div class="logo-text">
+        <h1>Rock Band</h1>
+        <p>Since 2023</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#music">Music</a>
+      <a href="#tour">Tour</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- Home Section -->
+  <div id="home" class="section">
+    <h2>Welcome to Rock Band!</h2>
+    <p>We are a rock band passionate about creating music that rocks your world. Stay tuned for our latest tracks and tour dates!</p>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" class="section">
+    <h2>About Us</h2>
+    <p>Rock Band was formed in 2023 with a mission to bring raw energy and passion to the world of rock music. Our members are dedicated to creating unforgettable experiences through our music.</p>
+  </div>
+
+  <!-- Music Section -->
+  <div id="music" class="section">
+    <h2>Our Music</h2>
+    <div class="music-grid">
+      <div class="music-item">
+        <img src="images/album1.png" alt="Album 1">
+        <h3>Album 1</h3>
+        <p>Released: 2023</p>
+      </div>
+      <div class="music-item">
+        <img src="images/album2.png" alt="Album 2">
+        <h3>Album 2</h3>
+        <p>Coming Soon</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tour Section -->
+  <div id="tour" class="section">
+    <h2>Tour Dates</h2>
+    <ul class="tour-dates">
+      <li>
+        <span>New York, NY</span>
+        <span>Oct 15, 2023</span>
+      </li>
+      <li>
+        <span>Los Angeles, CA</span>
+        <span>Oct 20, 2023</span>
+      </li>
+      <li>
+        <span>Chicago, IL</span>
+        <span>Oct 25, 2023</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="section">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <img src="images/logo.png" alt="Rock Band Logo" class="logo" style="height: 60px; margin-bottom: 15px;">
+        <h3>About Rock Band</h3>
+        <p>We are a rock band passionate about creating music that rocks your world. Stay tuned for our latest tracks and tour dates!</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#tour">Tour</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <img src="images/logo.png" alt="Rock Band Logo" style="height: 40px;">
+      <p>&copy; 2023 Rock Band. All rights reserved. | <a href="terms-and-privacy.html">Terms of Service</a> | <a href="terms-and-privacy.html">Privacy Policy</a></p>
+      <p class="designer">Designed by <a href="https://alectronic-solutions.github.io/home/" target="_blank">Alectronic Solutions</a></p>
+    </div>
+  </div>
+
+  <!-- JavaScript for interactivity -->
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Form submission handling
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! We will get back to you soon.');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
