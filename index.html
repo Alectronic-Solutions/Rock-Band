@@ -1,537 +1,1744 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock Band - Official Website</title>
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rock+Salt&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Global Styles */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of Rock Band. Tour dates, music, videos, and merchandise. Experience the noise.">
+    <meta property="og:title" content="Rock Band | Official Site">
+    <meta property="og:description" content="New Album 'Static Void' Out Now. Check tour dates and get tickets.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&q=80&w=1200">
+    <meta property="og:type" content="website">
+    
+    <title>Rock Band | Official Website</title>
+    
+    <!-- FAVICON (Uses your PNG) -->
+    <link rel="icon" href="portfolio-15.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    h1, h2, h3 {
-      font-family: 'Bangers', cursive;
-      font-weight: 400;
-      color: #ff0000;
-      letter-spacing: 2px;
-    }
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #E63946; /* Vibrant Rock Red */
+            --primary-dark: #b91c1c;
+            --background: #050505; /* Deep Black */
+            --surface: #121212; /* Slightly lighter black for cards */
+            --surface-hover: #1a1a1a;
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --border: rgba(255, 255, 255, 0.1);
+            
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            
+            --gutter: 2rem;
+            --max-width: 1200px;
+            --nav-height: 80px;
+        }
 
-    a {
-      color: #ff0000;
-      text-decoration: none;
-    }
+        /* Light Theme Override */
+        [data-theme="light"] {
+            --background: #f4f4f4;
+            --surface: #ffffff;
+            --surface-hover: #e0e0e0;
+            --text-main: #121212;
+            --text-muted: #666666;
+            --border: rgba(0, 0, 0, 0.1);
+        }
 
-    a:hover {
-      color: #ff4d4d;
-    }
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Header */
-    .header {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .header video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    .header h1 {
-      font-size: 5rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      animation: fadeIn 2s ease-in-out;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
 
-    .header p {
-      font-size: 1.8rem;
-      margin: 10px 0 0;
-      color: #ccc;
-      font-family: 'Rock Salt', cursive;
-      animation: fadeIn 3s ease-in-out;
-    }
+        ul {
+            list-style: none;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-    /* Navigation */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #222;
-      padding: 15px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
 
-    .nav .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin-top: 10px;
+        }
 
-    .nav .logo {
-      height: 50px;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-    .nav .logo-text h1 {
-      font-size: 2rem;
-      margin: 0;
-      color: #ff0000;
-    }
+        .section-header h2::after {
+            margin: 10px auto 0;
+        }
 
-    .nav .logo-text p {
-      font-size: 1rem;
-      margin: 0;
-      color: #ccc;
-      font-family: 'Rock Salt', cursive;
-    }
+        /* --- UI COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary);
+            color: var(--text-main);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        /* Fix button text color in light mode */
+        [data-theme="light"] .btn {
+            color: var(--text-main); 
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
+        .btn:hover, .btn:focus {
+            background: var(--primary);
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+        }
 
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-family: 'Bangers', cursive;
-      transition: color 0.3s ease;
-    }
+        .btn-solid {
+            background: var(--primary);
+            color: #ffffff;
+            border: 2px solid var(--primary);
+        }
 
-    .nav a:hover {
-      color: #ff0000;
-    }
+        .btn-solid:hover {
+            background: transparent;
+            color: var(--primary) !important;
+        }
 
-    /* Sections */
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
+        /* --- FLOATING BUTTONS --- */
+        .floating-btn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-    .section h2 {
-      font-size: 3.5rem;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      animation: slideIn 1s ease-in-out;
-    }
+        .floating-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
 
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+        #theme-toggle {
+            bottom: 30px;
+            left: 30px;
+        }
 
-    .section p {
-      font-size: 1.1rem;
-      color: #ccc;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        #back-to-top {
+            bottom: 30px;
+            right: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
 
-    /* Music Section */
-    .music-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 20px;
-    }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-    .music-item {
-      background-color: #222;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--gutter);
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-    .music-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
-    }
+        header.scrolled {
+            padding: 0 calc(var(--gutter) / 2);
+            height: 70px;
+        }
+        
+        /* Always keep navbar dark in dark mode, light in light mode - logic handled by vars */
 
-    .music-item img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
 
-    .music-item h3 {
-      margin: 15px 0;
-      font-size: 1.8rem;
-      color: #fff;
-    }
+        /* Logo Image styling */
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: inline-block;
+        }
 
-    .music-item p {
-      font-size: 1rem;
-      color: #ccc;
-    }
+        /* Fallback Icon styling */
+        .logo-icon-fallback {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
 
-    /* Tour Dates */
-    .tour-dates {
-      list-style: none;
-      padding: 0;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    .tour-dates li {
-      background-color: #222;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
 
-    .tour-dates li:hover {
-      transform: translateX(10px);
-      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
-    }
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
 
-    .tour-dates li span {
-      font-size: 1.2rem;
-      color: #fff;
-    }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
 
-    .tour-dates li span:first-child {
-      color: #ff0000;
-    }
+        .nav-cart {
+            position: relative;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
 
-    /* Contact Form */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 30px;
-      background-color: #222;
-      border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
-    }
+        .nav-cart:hover {
+            color: var(--primary);
+        }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #444;
-      border-radius: 5px;
-      font-size: 1rem;
-      background-color: #333;
-      color: #fff;
-      resize: none; /* Prevent resizing */
-    }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #ccc;
-    }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
 
-    .contact-form button {
-      background-color: #ff0000;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 100%;
-    }
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-main);
+            transition: all 0.3s ease-in-out;
+        }
 
-    .contact-form button:hover {
-      background-color: #ff4d4d;
-    }
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            width: 100%;
+            /* Realistic Concert Background */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 var(--gutter);
+            position: relative;
+        }
+        
+        [data-theme="light"] #hero {
+             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=1920');
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed;
+        }
+        
+        [data-theme="light"] .hero-title, 
+        [data-theme="light"] .hero-subtitle,
+        [data-theme="light"] .hero-desc {
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
 
-    /* Footer */
-    .footer {
-      background-color: #222;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
-    }
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+            z-index: 1;
+        }
 
-    .footer-content {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: rgba(0,0,0,0.6);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            backdrop-filter: blur(4px);
+        }
 
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-      margin: 20px;
-    }
+        .hero-title {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            color: #ffffff; /* Always white on hero */
+        }
 
-    .footer-section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: #ff0000;
-    }
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #e0e0e0; /* Always light on hero */
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
 
-    .footer-section p {
-      font-size: 1rem;
-      color: #ccc;
-    }
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 6rem var(--gutter);
+        }
 
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
+        /* --- TOUR DATES (Section A) --- */
+        #tour {
+            background-color: var(--surface);
+        }
 
-    .footer-section ul li {
-      margin: 10px 0;
-    }
+        .tour-list {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            gap: 1rem;
+        }
 
-    .footer-section ul li a {
-      color: #ccc;
-      font-size: 1rem;
-    }
+        .tour-item {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr auto;
+            align-items: center;
+            background: var(--background);
+            padding: 1.5rem;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
 
-    .footer-section ul li a:hover {
-      color: #ff0000;
-    }
+        .tour-item:hover {
+            border-left-color: var(--primary);
+            transform: translateX(10px);
+            background: var(--surface-hover);
+        }
 
-    .footer-bottom {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+        .tour-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--surface);
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+        }
 
-    .footer-bottom img {
-      height: 40px;
-      vertical-align: middle;
-    }
+        .tour-date .day {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1;
+        }
 
-    .footer-bottom a {
-      color: #ff0000;
-      margin: 0 10px;
-    }
+        .tour-date .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 700;
+        }
 
-    .footer-bottom a:hover {
-      color: #ff4d4d;
-    }
+        .tour-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
 
-    .footer-bottom .designer {
-      margin-top: 10px;
-      font-size: 0.8rem;
-    }
+        .tour-location {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .footer-bottom .designer a {
-      color: #ff0000;
-      text-decoration: none;
-    }
+        /* --- LATEST ALBUM (Section B) --- */
+        #music {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
 
-    .footer-bottom .designer a:hover {
-      color: #ff4d4d;
-    }
+        .music-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 3.5rem;
-      }
+        .album-art {
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
 
-      .header p {
-        font-size: 1.5rem;
-      }
+        .album-art img {
+            width: 100%;
+            transition: transform 0.5s ease;
+            border-radius: 4px;
+        }
+        
+        .album-art:hover img {
+            transform: scale(1.02);
+        }
 
-      .nav {
-        flex-direction: column;
-        gap: 10px;
-      }
+        .music-content h2 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
 
-      .nav .logo-container {
-        flex-direction: column;
-        text-align: center;
-      }
+        .music-content h2::after {
+            display: none; 
+        }
 
-      .section h2 {
-        font-size: 2.5rem;
-      }
+        .album-meta {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            display: block;
+        }
 
-      .music-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
+        .tracklist {
+            margin-bottom: 2rem;
+            border-top: 1px solid var(--border);
+        }
 
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+        .track {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .track:hover {
+            color: var(--text-main);
+            padding-left: 10px;
+            background: rgba(255,255,255,0.02);
+        }
+        
+        [data-theme="light"] .track:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .track span:first-child {
+            font-family: var(--font-heading);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .track i {
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            color: var(--primary);
+        }
+        
+        .track:hover i {
+            opacity: 1;
+        }
+
+        /* --- BAND MEMBERS / ABOUT --- */
+        #band {
+            background-color: var(--surface);
+        }
+
+        .band-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: var(--background);
+            overflow: hidden;
+            position: relative;
+            group: hover;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .member-img {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.4s ease;
+        }
+
+        .member-card:hover .member-img img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .member-card:hover .member-info {
+            border-bottom-color: var(--primary);
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* --- MERCH STORE SECTION --- */
+        #store {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: #fff; /* White background for product visibility */
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover or contain depending on image consistency */
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .add-to-cart-btn {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* --- NOTIFICATION TOAST --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--surface);
+            border-left: 4px solid var(--primary);
+            color: var(--text-main);
+            padding: 1rem 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: var(--text-main);
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        
+        .modal-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        
+        .modal-btn:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+
+        /* --- FOOTER 2025 --- */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 6rem var(--gutter) 2rem;
+            border-top: 1px solid #222;
+        }
+        
+        /* Footer stays dark even in light mode for professional contrast */
+        [data-theme="light"] footer {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .footer-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .footer-brand h2 span {
+            color: var(--primary);
+        }
+        
+        .footer-brand h2::after {
+            display: none;
+        }
+        
+        .footer-desc {
+            color: #888;
+            font-size: 0.9rem;
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #888;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+            padding: 0.8rem;
+            width: 100%;
+            font-family: var(--font-body);
+        }
+
+        .newsletter-btn {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-legal a {
+            color: #666;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+        
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        .alectronic-credits {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .alectronic-link {
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .alectronic-link:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 900px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .music-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .album-art {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Nav */
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+                background-color: var(--primary);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+                background-color: var(--primary);
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: black;
+                width: 100%;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                transition: 0.3s;
+                z-index: 999;
+            }
+            
+            [data-theme="light"] .nav-menu {
+                background-color: white;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            /* Mobile Tour List */
+            .tour-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .tour-location {
+                justify-content: center;
+            }
+
+            .tour-date {
+                width: 80px;
+                margin: 0 auto;
+            }
+
+            .tour-actions {
+                width: 100%;
+            }
+            
+            .tour-actions .btn {
+                width: 100%;
+            }
+
+            /* Typography adjustments */
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            #theme-toggle, #back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+            }
+            
+            #theme-toggle { left: 20px; }
+            #back-to-top { right: 20px; }
+            
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header with Video Background -->
-  <div class="header">
-    <video autoplay muted loop>
-      <source src="videos/background.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <h1>Rock Band</h1>
-    <p>Your favorite rock band since 2023</p>
-  </div>
 
-  <!-- Navigation -->
-  <div class="nav">
-    <div class="logo-container">
-      <img src="images/logo.png" alt="Rock Band Logo" class="logo">
-      <div class="logo-text">
-        <h1>Rock Band</h1>
-        <p>Since 2023</p>
-      </div>
+    <!-- NAVIGATION -->
+    <header id="header">
+        <a href="#hero" class="logo">
+            <!-- Image Logo: Tries to load your PNG first -->
+            <img src="portfolio-15.png" alt="RB" class="logo-img" onerror="this.style.display='none'; document.querySelector('.logo-icon-fallback').style.display='inline-block';">
+            
+            <!-- Fallback Icon: Shown only if the image fails to load -->
+            <i class="fas fa-bolt logo-icon-fallback" style="display: none; margin-right: 0.5rem;"></i>
+            
+            Rock<span>Band</span>
+        </a>
+        
+        <div class="nav-actions">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#tour" class="nav-link">Tour Dates</a></li>
+                    <li><a href="#music" class="nav-link">Music</a></li>
+                    <li><a href="#band" class="nav-link">The Band</a></li>
+                    <li><a href="#store" class="nav-link">Store</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-cart" onclick="alert('Viewing cart... (Simulation)')">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- FLOATING BUTTONS -->
+    <button id="theme-toggle" class="floating-btn" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <button id="back-to-top" class="floating-btn" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Item added to cart!</span>
     </div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#music">Music</a>
-      <a href="#tour">Tour</a>
-      <a href="#contact">Contact</a>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">The New Era of Rock</p>
+            <h1 class="hero-title">Loud. Raw.<br>Unapologetic.</h1>
+            <p class="hero-desc">The new album "Static Void" is out now. Experience the sound that is tearing down stadiums across the globe.</p>
+            <div class="hero-btns">
+                <a href="#tour" class="btn btn-solid">Get Tickets</a>
+                <a href="#music" class="btn" style="margin-left: 1rem;">Listen Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOUR SECTION -->
+    <section id="tour">
+        <div class="section-header">
+            <h2>Upcoming Shows</h2>
+            <p style="color: var(--text-muted);">Catch us live on the 'Void Walker' World Tour.</p>
+        </div>
+
+        <div class="tour-list">
+            <!-- Show 1 -->
+            <article class="tour-item">
+                <div class="tour-date">
+                    <span class="day">15</span>
+                    <span class="month">Oct</span>
+                </div>
+                <div class="tour-info">
+                    <h3>The Ironworks</h3>
+                    <div class="tour-location">
+                        <i class="fas fa-map-marker-alt"></i> Chicago, IL
+                    </div>
+                </div>
+                <div class="tour-status" style="color: var(--text-muted); text-align: center;">
+                    Selling Fast
+                </div>
+                <div class="tour-actions">
+                    <button class="btn" onclick="alert('Redirecting to Ticketmaster...')">Tickets</button>
+                </div>
+            </article>
+
+            <!-- Show 2 -->
+            <article class="tour-item">
+                <div class="tour-date">
+                    <span class="day">22</span>
+                    <span class="month">Oct</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Madison Square Garden</h3>
+                    <div class="tour-location">
+                        <i class="fas fa-map-marker-alt"></i> New York, NY
+                    </div>
+                </div>
+                <div class="tour-status" style="color: var(--primary); text-align: center; font-weight: bold; text-transform: uppercase;">
+                    Sold Out
+                </div>
+                <div class="tour-actions">
+                    <button class="btn" style="opacity: 0.5; cursor: not-allowed;">Sold Out</button>
+                </div>
+            </article>
+
+            <!-- Show 3 -->
+            <article class="tour-item">
+                <div class="tour-date">
+                    <span class="day">05</span>
+                    <span class="month">Nov</span>
+                </div>
+                <div class="tour-info">
+                    <h3>O2 Arena</h3>
+                    <div class="tour-location">
+                        <i class="fas fa-map-marker-alt"></i> London, UK
+                    </div>
+                </div>
+                <div class="tour-status" style="color: var(--text-muted); text-align: center;">
+                    Available
+                </div>
+                <div class="tour-actions">
+                    <button class="btn" onclick="alert('Redirecting to Ticketmaster...')">Tickets</button>
+                </div>
+            </article>
+            
+            <!-- Show 4 -->
+            <article class="tour-item">
+                <div class="tour-date">
+                    <span class="day">12</span>
+                    <span class="month">Nov</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Zenith</h3>
+                    <div class="tour-location">
+                        <i class="fas fa-map-marker-alt"></i> Paris, FR
+                    </div>
+                </div>
+                <div class="tour-status" style="color: var(--text-muted); text-align: center;">
+                    Available
+                </div>
+                <div class="tour-actions">
+                    <button class="btn" onclick="alert('Redirecting to Ticketmaster...')">Tickets</button>
+                </div>
+            </article>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" onclick="alert('Full schedule not yet available'); return false;" style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">View Full Tour Schedule <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- MUSIC SECTION -->
+    <section id="music">
+        <div class="music-grid">
+            <div class="album-art">
+                <!-- Realistic Abstract/Dark Album Art -->
+                <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=600" alt="Static Void Album Cover">
+            </div>
+            <div class="music-content">
+                <h2>Static Void</h2>
+                <span class="album-meta">New Album / Out Now</span>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                    A sonic journey through the abyss. Featuring the hit singles "Echoes in the Dark" and "Redline". Available on all streaming platforms and vinyl.
+                </p>
+                
+                <div class="tracklist">
+                    <div class="track">
+                        <span><i class="fas fa-play"></i> 01. Redline</span>
+                        <span>3:45</span>
+                    </div>
+                    <div class="track">
+                        <span><i class="fas fa-play"></i> 02. Echoes in the Dark</span>
+                        <span>4:12</span>
+                    </div>
+                    <div class="track">
+                        <span><i class="fas fa-play"></i> 03. The Silence</span>
+                        <span>3:58</span>
+                    </div>
+                    <div class="track">
+                        <span><i class="fas fa-play"></i> 04. Breaking Point</span>
+                        <span>3:22</span>
+                    </div>
+                </div>
+
+                <div class="music-links">
+                    <a href="https://open.spotify.com" target="_blank" class="btn btn-solid"><i class="fab fa-spotify"></i> Stream</a>
+                    <a href="https://music.apple.com" target="_blank" class="btn" style="margin-left: 1rem;"><i class="fab fa-apple"></i> Buy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAND MEMBERS SECTION -->
+    <section id="band">
+        <div class="section-header">
+            <h2>The Band</h2>
+        </div>
+        
+        <div class="band-grid">
+            <!-- Realistic Band Member Images -->
+            <div class="member-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=400" alt="Lead Singer">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Jax Teller</h3>
+                    <p class="member-role">Vocals / Guitar</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" alt="Drummer">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Sarah 'Sticks'</h3>
+                    <p class="member-role">Drums / Percussion</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400" alt="Bassist">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Marcus Cole</h3>
+                    <p class="member-role">Bass / Synth</p>
+                </div>
+            </div>
+            
+            <div class="member-card">
+                <div class="member-img">
+                    <!-- New Female Member Image for Luna Ray -->
+                    <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?auto=format&fit=crop&q=80&w=400" alt="Luna Ray">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Luna Ray</h3>
+                    <p class="member-role">Keyboards / Vocals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MERCH STORE SECTION -->
+    <section id="store">
+        <div class="section-header">
+            <h2>Merch Store</h2>
+            <p style="color: var(--text-muted);">Wear the noise. Official gear.</p>
+        </div>
+
+        <div class="store-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=400" alt="Tour T-Shirt">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Void Walker Tour Tee</h3>
+                    <span class="product-price">$35.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=400" alt="Band Hoodie">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Official Hoodie</h3>
+                    <span class="product-price">$60.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=400" alt="Vinyl Record">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Static Void Vinyl</h3>
+                    <span class="product-price">$30.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=400" alt="Snapback Cap">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Logo Snapback</h3>
+                    <span class="product-price">$25.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Rock<span>Band</span></h2>
+                <p class="footer-desc">
+                    Defining the sound of modern rock since 2015. Raw energy, pure emotion, and louder than life.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://open.spotify.com" target="_blank" class="social-icon" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#tour">Tour Dates</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#band">The Band</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Merch</h4>
+                <ul class="footer-links">
+                    <li><a href="#" data-modal="store">Official Store</a></li>
+                    <li><a href="#" data-modal="arrivals">New Arrivals</a></li>
+                    <li><a href="#" data-modal="accessories">Accessories</a></li>
+                    <li><a href="#" data-modal="vinyl">Vinyl Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Stay Updated</h4>
+                <p style="color: #888; font-size: 0.9rem; margin-bottom: 1rem;">Join the mailing list for presale access.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Rock Band. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <a href="#" data-modal="privacy">Privacy Policy</a>
+                <a href="#" data-modal="terms">Terms of Service</a>
+                <a href="#" data-modal="cookies">Cookies</a>
+            </div>
+        </div>
+
+        <!-- NEW CREDITS SECTION -->
+        <div class="alectronic-credits">
+            <a href="https://alectronic-solutions.github.io/" target="_blank" class="alectronic-link">
+                © 2025 Alectronic Solutions. All rights reserved.
+            </a>
+        </div>
+    </footer>
+
+    <!-- MODAL CONTAINER -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h3 class="modal-title" id="modal-title">Title</h3>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Home Section -->
-  <div id="home" class="section">
-    <h2>Welcome to Rock Band!</h2>
-    <p>We are a rock band passionate about creating music that rocks your world. Stay tuned for our latest tracks and tour dates!</p>
-  </div>
+    <!-- JAVASCRIPT -->
+    <script>
+        let cartTotal = 0;
 
-  <!-- About Section -->
-  <div id="about" class="section">
-    <h2>About Us</h2>
-    <p>Rock Band was formed in 2023 with a mission to bring raw energy and passion to the world of rock music. Our members are dedicated to creating unforgettable experiences through our music.</p>
-  </div>
+        function addToCart() {
+            cartTotal++;
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.innerText = cartTotal;
+            
+            // Animation for cart count
+            cartCountElement.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                cartCountElement.style.transform = "scale(1)";
+            }, 200);
 
-  <!-- Music Section -->
-  <div id="music" class="section">
-    <h2>Our Music</h2>
-    <div class="music-grid">
-      <div class="music-item">
-        <img src="images/album1.png" alt="Album 1">
-        <h3>Album 1</h3>
-        <p>Released: 2023</p>
-      </div>
-      <div class="music-item">
-        <img src="images/album2.png" alt="Album 2">
-        <h3>Album 2</h3>
-        <p>Coming Soon</p>
-      </div>
-    </div>
-  </div>
+            // Show Toast
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-  <!-- Tour Section -->
-  <div id="tour" class="section">
-    <h2>Tour Dates</h2>
-    <ul class="tour-dates">
-      <li>
-        <span>New York, NY</span>
-        <span>Oct 15, 2023</span>
-      </li>
-      <li>
-        <span>Los Angeles, CA</span>
-        <span>Oct 20, 2023</span>
-      </li>
-      <li>
-        <span>Chicago, IL</span>
-        <span>Oct 25, 2023</span>
-      </li>
-    </ul>
-  </div>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const header = document.querySelector('header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const themeToggle = document.getElementById('theme-toggle');
+            const backToTop = document.getElementById('back-to-top');
 
-  <!-- Contact Section -->
-  <div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+            // --- MOBILE MENU ---
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
 
-  <!-- Footer -->
-  <div class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <img src="images/logo.png" alt="Rock Band Logo" class="logo" style="height: 60px; margin-bottom: 15px;">
-        <h3>About Rock Band</h3>
-        <p>We are a rock band passionate about creating music that rocks your world. Stay tuned for our latest tracks and tour dates!</p>
-      </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#music">Music</a></li>
-          <li><a href="#tour">Tour</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <img src="images/logo.png" alt="Rock Band Logo" style="height: 40px;">
-      <p>&copy; 2023 Rock Band. All rights reserved. | <a href="terms-and-privacy.html">Terms of Service</a> | <a href="terms-and-privacy.html">Privacy Policy</a></p>
-      <p class="designer">Designed by <a href="https://alectronic-solutions.github.io/" target="_blank">Alectronic Solutions</a></p>
-    </div>
-  </div>
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
 
-  <!-- JavaScript for interactivity -->
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+            // --- SCROLL EFFECTS ---
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            // --- BACK TO TOP ---
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // --- THEME TOGGLE ---
+            themeToggle.addEventListener('click', () => {
+                const body = document.body;
+                const icon = themeToggle.querySelector('i');
+                
+                if (body.getAttribute('data-theme') === 'light') {
+                    body.setAttribute('data-theme', 'dark');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                } else {
+                    body.setAttribute('data-theme', 'light');
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+            });
+
+            // --- MODAL LOGIC ---
+            const modalOverlay = document.getElementById('modal-overlay');
+            const closeModalBtn = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const legalLinks = document.querySelectorAll('[data-modal]');
+
+            // Enhanced Content Object
+            const siteContent = {
+                // LEGAL
+                privacy: {
+                    title: "Privacy Policy",
+                    text: `
+                        <p><strong>Last Updated: January 2025</strong></p>
+                        <p>At Rock Band Official, we respect your privacy. This policy outlines how we handle your personal information.</p>
+                        <p>1. <strong>Data Collection:</strong> We collect emails for our newsletter only with your explicit consent. We do not sell your data to third parties.</p>
+                        <p>2. <strong>Usage:</strong> Your data is used solely to inform you about tour dates, album releases, and merchandise updates.</p>
+                        <p>3. <strong>Security:</strong> We employ industry-standard security measures to protect your information.</p>
+                    `
+                },
+                terms: {
+                    title: "Terms of Service",
+                    text: `
+                        <p><strong>Welcome to the Rock Band Official Site.</strong></p>
+                        <p>By accessing this website, you agree to be bound by these Terms and Conditions.</p>
+                        <p>1. <strong>Intellectual Property:</strong> All music, images, and branding are the property of Rock Band and its label. Unauthorized reproduction is prohibited.</p>
+                        <p>2. <strong>User Conduct:</strong> You agree not to use this site for any unlawful purpose.</p>
+                        <p>3. <strong>Ticket Sales:</strong> All ticket sales are processed through third-party vendors (e.g., Ticketmaster). We are not responsible for transaction issues on external sites.</p>
+                    `
+                },
+                cookies: {
+                    title: "Cookie Policy",
+                    text: `
+                        <p><strong>We use cookies to enhance your experience.</strong></p>
+                        <p>1. <strong>Essential Cookies:</strong> Necessary for the site to function (e.g., theme preferences).</p>
+                        <p>2. <strong>Analytics:</strong> We use anonymous analytics to understand our audience demographics.</p>
+                        <p>By continuing to use this site, you consent to our use of cookies.</p>
+                    `
+                },
+                // SHOP MODALS (Still accessible via footer)
+                store: {
+                    title: "Official Store",
+                    text: `
+                        <p>Browse our complete catalog of merchandise, including t-shirts, hoodies, hats, and posters. We ship worldwide.</p>
+                        <p><strong>Check out the Merch Store section above for products!</strong></p>
+                        <a href="#store" class="modal-btn" onclick="closeModal()">Go to Store Section</a>
+                    `
+                },
+                arrivals: {
+                    title: "New Arrivals",
+                    text: `
+                        <p>Check out the exclusive merchandise for the <strong>Static Void Tour</strong>.</p>
+                        <ul style="list-style: disc; margin-left: 20px; margin-bottom: 1rem; color: #a3a3a3;">
+                            <li>Tour Dates T-Shirt (Black)</li>
+                            <li>Static Void Hoodie (Limited Edition)</li>
+                            <li>Signed Posters</li>
+                        </ul>
+                        <a href="#store" class="modal-btn" onclick="closeModal()">Shop Now</a>
+                    `
+                },
+                accessories: {
+                    title: "Accessories",
+                    text: `
+                        <p>Complete your look with official Rock Band accessories.</p>
+                        <p>Available now: Embroidered patches, enamel pins, guitar picks used by Elena V., and drumsticks signed by Sarah.</p>
+                        <a href="#store" class="modal-btn" onclick="closeModal()">Shop Accessories</a>
+                    `
+                },
+                vinyl: {
+                    title: "Vinyl Collection",
+                    text: `
+                        <p>Experience the music in its purest form.</p>
+                        <p><strong>Static Void - Deluxe LP</strong><br>180g Red Splatter Vinyl. Includes lyric booklet and digital download code.</p>
+                        <p><strong>Back Catalog Box Set</strong><br>All 3 previous albums remastered on black vinyl.</p>
+                        <a href="#store" class="modal-btn" onclick="closeModal()">Buy Vinyl</a>
+                    `
+                }
+            };
+
+            // Fix for accessing functions inside module if needed, though this script is global
+            window.closeModal = function() {
+                modalOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            function openModal(type) {
+                const content = siteContent[type];
+                if (content) {
+                    modalTitle.textContent = content.title;
+                    modalBody.innerHTML = content.text;
+                    modalOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+
+            legalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const type = link.getAttribute('data-modal');
+                    openModal(type);
+                });
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+            
+            // Close on click outside
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+
+            // --- ACCESSIBILITY ---
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    hamburger.focus();
+                }
+            });
         });
-      });
-    });
-
-    // Form submission handling
-    const contactForm = document.querySelector('.contact-form');
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you for reaching out! We will get back to you soon.');
-      contactForm.reset();
-    });
-  </script>
+    </script>
 </body>
 </html>
